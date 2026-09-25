@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whitepapers by Rifat Erdem Sahin | AI Architecture & AGI Roadmaps</title>
+  <meta name="description" content="Technical whitepapers and strategic research on Artificial Intelligence, AGI transition roadmaps, agentic architectures, and verified systems by Rifat Erdem Sahin.">
+  <meta name="author" content="Rifat Erdem Sahin">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rifaterdemsahin.github.io/whitepaper/">
+  <meta property="og:title" content="Whitepapers by Rifat Erdem Sahin | AI & AGI Roadmaps">
+  <meta property="og:description" content="Read 'How We Reach AGI: Why Certification Is Step Zero' and explore technical frameworks by AI Solutions Architect Rifat Erdem Sahin.">
+  <meta property="og:site_name" content="Rifat Erdem Sahin - Whitepaper Hub">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@rifaterdemsahin">
+  <meta name="twitter:title" content="Whitepapers by Rifat Erdem Sahin">
+  <meta name="twitter:description" content="Engineering and governance roadmap to AGI through verified competence, agentic workflows, and adaptive systems.">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-primary: #0a0d14;
+      --bg-secondary: #101522;
+      --bg-card: rgba(18, 24, 38, 0.75);
+      --bg-card-hover: rgba(28, 36, 56, 0.85);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(0, 229, 155, 0.25);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #00e59b;
+      --accent-glow: rgba(0, 229, 155, 0.15);
+      --accent-cyan: #38bdf8;
+      --accent-purple: #a855f7;
+      --accent-amber: #f59e0b;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(0, 229, 155, 0.07) 0%, transparent 40%),
+        radial-gradient(circle at 85% 70%, rgba(56, 189, 248, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 50% 100%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(10, 13, 20, 0.85);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
+      color: #050a12;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-btn:hover {
+      background: var(--accent);
+      color: #06090e;
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 70px 0 45px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: var(--accent-glow);
+      border: 1px solid var(--border-accent);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 24px;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-badge i {
+      font-size: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.3rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 75%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 36px;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #050a12;
+      padding: 12px 26px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: var(--transition);
+      box-shadow: 0 4px 20px rgba(0, 229, 155, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0, 229, 155, 0.4);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Featured Whitepaper Card */
+    .featured-section {
+      padding: 30px 0 60px;
+    }
+
+    .featured-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      padding: 42px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-cyan), var(--accent-purple));
+    }
+
+    .featured-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .tag-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .tag-featured {
+      background: rgba(0, 229, 155, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(0, 229, 155, 0.3);
+    }
+
+    .tag-category {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .whitepaper-meta {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .featured-title {
+      font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .featured-summary {
+      color: #cbd5e1;
+      font-size: 1.05rem;
+      margin-bottom: 28px;
+      max-width: 980px;
+      line-height: 1.7;
+    }
+
+    .summary-highlight {
+      background: rgba(0, 229, 155, 0.06);
+      border-left: 3px solid var(--accent);
+      padding: 14px 20px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-bottom: 30px;
+      font-size: 0.98rem;
+      color: #e2e8f0;
+    }
+
+    /* Roadmap Visualizer Grid */
+    .roadmap-section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-main);
+    }
+
+    .phases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin-bottom: 34px;
+    }
+
+    .phase-card {
+      background: rgba(14, 20, 32, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      transition: var(--transition);
+    }
+
+    .phase-card:hover {
+      border-color: rgba(255, 255, 255, 0.16);
+      background: rgba(20, 28, 44, 0.9);
+      transform: translateY(-2px);
+    }
+
+    .phase-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .phase-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .phase-1 { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); }
+    .phase-2 { background: rgba(168, 85, 247, 0.15); color: var(--accent-purple); }
+    .phase-3 { background: rgba(0, 229, 155, 0.15); color: var(--accent); }
+
+    .step-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.88rem;
+    }
+
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--accent-cyan);
+      min-width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .step-num.zero {
+      background: var(--accent);
+      color: #06090e;
+    }
+
+    .step-content strong {
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .step-content span {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    /* Action bar inside featured */
+    .card-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .read-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .share-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .share-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .share-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      transition: var(--transition);
+    }
+
+    .share-btn:hover {
+      background: var(--accent);
+      color: #06090e;
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* Social Media / Author Section */
+    .author-section {
+      padding: 50px 0 70px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 36px;
+      max-width: 680px;
+    }
+
+    .author-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 38px;
+      backdrop-filter: blur(12px);
+    }
+
+    .author-profile {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .author-avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #050a12;
+      box-shadow: 0 8px 24px rgba(0, 229, 155, 0.2);
+    }
+
+    .author-info h3 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .author-info p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .author-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge-pill {
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      color: #cbd5e1;
+    }
+
+    .badge-pill.security {
+      border-color: rgba(0, 229, 155, 0.3);
+      color: var(--accent);
+    }
+
+    /* Social Links Grid */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .social-card {
+      background: rgba(14, 20, 32, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: var(--transition);
+    }
+
+    .social-card:hover {
+      background: rgba(28, 36, 56, 0.8);
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+    }
+
+    .social-icon-wrapper {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .icon-linkedin { background: rgba(10, 102, 194, 0.15); color: #0a66c2; }
+    .icon-github { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
+    .icon-youtube { background: rgba(255, 0, 0, 0.15); color: #ff3333; }
+    .icon-web { background: rgba(0, 229, 155, 0.15); color: var(--accent); }
+    .icon-x { background: rgba(255, 255, 255, 0.12); color: #e2e8f0; }
+
+    .social-text h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .social-text p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Full Whitepaper Modal Reader */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(5, 8, 14, 0.88);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-container {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 900px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+      animation: modalSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalSlide {
+      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-header {
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+    }
+
+    .modal-body {
+      padding: 32px 36px;
+      overflow-y: auto;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #cbd5e1;
+    }
+
+    .modal-body h1, .modal-body h2, .modal-body h3 {
+      color: var(--text-main);
+      margin-top: 1.6em;
+      margin-bottom: 0.6em;
+    }
+
+    .modal-body p {
+      margin-bottom: 1.2em;
+    }
+
+    .modal-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5em 0;
+      font-size: 0.9rem;
+    }
+
+    .modal-body th, .modal-body td {
+      border: 1px solid var(--border-color);
+      padding: 10px 14px;
+      text-align: left;
+    }
+
+    .modal-body th {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-main);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border-color);
+      padding: 40px 0;
+      background: rgba(10, 13, 20, 0.95);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-copy {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-link {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      transition: var(--transition);
+    }
+
+    .footer-link:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .featured-card {
+        padding: 24px;
+      }
+      .phases-grid {
+        grid-template-columns: 1fr;
+      }
+      .card-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .author-profile {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <span>Rifat Erdem Sahin</span>
+        <span class="brand-badge">Whitepaper Hub</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#featured" class="nav-link"><i class="fa-solid fa-scroll"></i> Whitepaper</a>
+        <a href="#author" class="nav-link"><i class="fa-solid fa-user-tie"></i> Author</a>
+        <a href="https://www.linkedin.com/in/rifaterdemsahin/" target="_blank" rel="noopener noreferrer" class="nav-btn">
+          <i class="fa-brands fa-linkedin"></i> LinkedIn
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <i class="fa-solid fa-microchip"></i> Architectural Frameworks & Research
+      </div>
+      <h1 class="hero-title">
+        Engineering the Path to <span class="gradient-text">Verified AGI Systems</span>
+      </h1>
+      <p class="hero-subtitle">
+        Rigorous whitepapers, autonomous agent architectures, and execution roadmaps designed for engineers, architects, and technology leaders.
+      </p>
+      <div class="hero-actions">
+        <a href="#featured" class="btn-primary">
+          <i class="fa-solid fa-book-open"></i> Read Latest Whitepaper
+        </a>
+        <a href="https://github.com/rifaterdemsahin/whitepaper" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <i class="fa-brands fa-github"></i> View GitHub Repository
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content: Featured Whitepaper -->
+  <main class="container">
+    <section id="featured" class="featured-section">
+      <article class="featured-card">
+        <div class="featured-header">
+          <div class="tag-group">
+            <span class="tag tag-featured"><i class="fa-solid fa-star"></i> Featured Release</span>
+            <span class="tag tag-category">AGI Roadmap & Governance</span>
+          </div>
+          <div class="whitepaper-meta">
+            <span><i class="fa-regular fa-calendar"></i> 25 Sept 2026</span>
+            <span><i class="fa-regular fa-user"></i> Rifat Erdem Sahin (@Erdem)</span>
+          </div>
+        </div>
+
+        <h2 class="featured-title">How We Reach AGI: Why Certification Is Step Zero</h2>
+
+        <p class="featured-summary">
+          Artificial General Intelligence is not reached in a single breakthrough. It is reached through a staged build-up of verified capability, moving from certified individual competence to certified organizational systems and, eventually, to adaptive machine systems that can absorb and extend that competence.
+        </p>
+
+        <div class="summary-highlight">
+          <strong>Key Thesis:</strong> Certification is not a formality bolted onto the front of the process — it is the control mechanism that makes every subsequent step trustworthy. Without a verified baseline at Step 0, none of the automation, agentic delegation, or adaptive systems built downstream can be safely trusted, audited, or scaled.
+        </div>
+
+        <!-- 3 Phase Roadmap Visualizer -->
+        <h3 class="roadmap-section-title">
+          <i class="fa-solid fa-diagram-project"></i> The 10-Step Transition Roadmap (Steps 0–9)
+        </h3>
+
+        <div class="phases-grid">
+          <!-- Phase 1 -->
+          <div class="phase-card">
+            <div class="phase-header">
+              <span class="phase-badge phase-1">Phase 1: Steps 0–4</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Individual Foundation</span>
+            </div>
+            <ul class="step-list">
+              <li class="step-item">
+                <span class="step-num zero">0</span>
+                <div class="step-content">
+                  <strong>Certification</strong>
+                  <span>Validated, frontier-lab-backed AI skills baseline</span>
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-num">1</span>
+                <div class="step-content">
+                  <strong>New Workforce</strong>
+                  <span>Human-AI collaboration roles and operating mindset</span>
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-num">2</span>
+                <div class="step-content">
+                  <strong>Foundation</strong>
+                  <span>AI infrastructure, data strategy, and compute stack</span>
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-num">3</span>
+                <div class="step-content">
+                  <strong>CV as Code</strong>
+                  <span>Living, public resume and versioned track record</span>
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-num">4</span>
+                <div class="step-content">
+                  <strong>Second Brain</strong>
+                  <span>Organized personal knowledge management (PKM)</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Phase 2 -->
+          <div class="phase-card">
+            <div class="phase-header">
+              <span class="phase-badge phase-2">Phase 2: Steps 5–7</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Automation & Evaluation</span>
+            </div>
+            <ul class="step-list">
+              <li class="step-item">
+                <span class="step-num">5</span>
+                <div class="step-content">
+                  <strong>Reverse Training</strong>
+                  <span>Deconstructed, rebuilt technical understanding</span>
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-num">6</span>
+                <div class="step-content">
+                  <strong>Agents</strong>
+                  <span>Autonomous, multi-step agentic task execution</span>
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-num">7</span>
+                <div class="step-content">
+                  <strong>RAGAS Evaluation</strong>
+                  <span>Retrieval and generation quality assessment</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Phase 3 -->
+          <div class="phase-card">
+            <div class="phase-header">
+              <span class="phase-badge phase-3">Phase 3: Steps 8–9</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Adaptive Systems & AGI</span>
+            </div>
+            <ul class="step-list">
+              <li class="step-item">
+                <span class="step-num">8</span>
+                <div class="step-content">
+                  <strong>AOM (Adaptive Object Model)</strong>
+                  <span>Unified runtime-adaptive core for agent orchestration</span>
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-num">9</span>
+                <div class="step-content">
+                  <strong>AGI</strong>
+                  <span>General problem-solving systems across multi-domains</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Action Bar -->
+        <div class="card-actions">
+          <div class="read-actions">
+            <a href="how-to-reach-agi.html" class="btn-primary">
+              <i class="fa-solid fa-file-lines"></i> Read Full Whitepaper
+            </a>
+            <button class="btn-secondary" onclick="openReaderModal()">
+              <i class="fa-solid fa-expand"></i> Quick In-Page Reader
+            </button>
+            <a href="how-to-reach-agi.md" class="btn-secondary" download>
+              <i class="fa-solid fa-download"></i> Download Markdown
+            </a>
+          </div>
+
+          <div class="share-actions">
+            <span class="share-label">Share:</span>
+            <a href="#" class="share-btn" title="Share on LinkedIn" onclick="shareOnLinkedIn(event)">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="share-btn" title="Share on X" onclick="shareOnX(event)">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Author & Social Media Connection Section -->
+    <section id="author" class="author-section">
+      <h2 class="section-title">Author & Research Profiles</h2>
+      <p class="section-desc">
+        Authored by Rifat Erdem Sahin — AI Solutions Architect & Delivery Engineer bridging enterprise capability gaps through AI-powered automation and verified systems.
+      </p>
+
+      <div class="author-card">
+        <div class="author-profile">
+          <div class="author-avatar">
+            <i class="fa-solid fa-brain"></i>
+          </div>
+          <div class="author-info">
+            <h3>Rifat Erdem Sahin</h3>
+            <p>AI Solutions Architect · AI-Enhanced Delivery Engineer · Cambridge, United Kingdom</p>
+            <div class="author-tags">
+              <span class="badge-pill security"><i class="fa-solid fa-shield-halved"></i> SC Cleared</span>
+              <span class="badge-pill security"><i class="fa-solid fa-shield-halved"></i> NATO Security Clearance</span>
+              <span class="badge-pill">DevOps to AI Transformation</span>
+              <span class="badge-pill">Frontier Lab Certified</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Media Links Grid -->
+        <div class="social-grid">
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/rifaterdemsahin/" target="_blank" rel="noopener noreferrer" class="social-card">
+            <div class="social-icon-wrapper icon-linkedin">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </div>
+            <div class="social-text">
+              <h4>LinkedIn</h4>
+              <p>@rifaterdemsahin</p>
+            </div>
+          </a>
+
+          <!-- GitHub -->
+          <a href="https://github.com/rifaterdemsahin" target="_blank" rel="noopener noreferrer" class="social-card">
+            <div class="social-icon-wrapper icon-github">
+              <i class="fa-brands fa-github"></i>
+            </div>
+            <div class="social-text">
+              <h4>GitHub</h4>
+              <p>@rifaterdemsahin</p>
+            </div>
+          </a>
+
+          <!-- YouTube -->
+          <a href="https://www.youtube.com/@RifatErdemSahin" target="_blank" rel="noopener noreferrer" class="social-card">
+            <div class="social-icon-wrapper icon-youtube">
+              <i class="fa-brands fa-youtube"></i>
+            </div>
+            <div class="social-text">
+              <h4>YouTube</h4>
+              <p>@RifatErdemSahin</p>
+            </div>
+          </a>
+
+          <!-- Personal Website -->
+          <a href="https://www.rifaterdemsahin.com" target="_blank" rel="noopener noreferrer" class="social-card">
+            <div class="social-icon-wrapper icon-web">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <div class="social-text">
+              <h4>Personal Website</h4>
+              <p>rifaterdemsahin.com</p>
+            </div>
+          </a>
+
+          <!-- Twitter / X -->
+          <a href="https://x.com/rifaterdemsahin" target="_blank" rel="noopener noreferrer" class="social-card">
+            <div class="social-icon-wrapper icon-x">
+              <i class="fa-brands fa-x-twitter"></i>
+            </div>
+            <div class="social-text">
+              <h4>X (Twitter)</h4>
+              <p>@rifaterdemsahin</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Reader for instant reading -->
+  <div id="readerModal" class="modal-overlay" onclick="handleModalClick(event)">
+    <div class="modal-container" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3>How We Reach AGI: Why Certification Is Step Zero</h3>
+        <button class="modal-close" onclick="closeReaderModal()" aria-label="Close reader">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <p style="color: var(--accent); font-family: var(--font-mono); font-size: 0.85rem;">25 Sept 2026 · @Erdem · By Rifat Erdem Sahin</p>
+        
+        <h2>Executive Summary</h2>
+        <p>Artificial General Intelligence is not reached in a single breakthrough. It is reached through a staged build-up of verified capability, moving from certified individual competence to certified organizational systems and, eventually, to adaptive machine systems that can absorb and extend that competence.</p>
+        <p>This white paper sets out a ten-step roadmap (Step 0 through Step 9) for that transition and argues that certification is not a formality bolted onto the front of the process. It is the control mechanism that makes every later step trustworthy. Without a verified baseline at Step 0, none of the automation, agentic delegation, or adaptive systems built in later steps can be safely trusted, audited, or scaled.</p>
+
+        <h2>Introduction: The AGI Transition Challenge</h2>
+        <p>Most AI transformation efforts fail for the same reason: they start with tools instead of competence. An organization or individual adopts a model, an agent framework, or an automation pipeline before anyone has demonstrated they understand how the underlying system behaves, fails, or needs to be governed. The result is fragile automation that cannot be trusted with autonomy, and a workforce that cannot evaluate whether the AI's output is correct.</p>
+        <p>The roadmap below solves this by treating AI transformation as a dependency graph rather than a checklist. Each step only works because the step before it produced something verifiable: a certified person, a documented workflow, a public track record, an organized knowledge base, an evaluated agent. Skipping a step does not save time, it just moves the failure further downstream, into production systems that are harder to unwind.</p>
+
+        <h2>The Ten-Step Roadmap</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Name</th>
+              <th>What It Produces</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>0</strong></td><td><strong>Certification</strong></td><td>Validated, frontier-lab-backed AI skills</td></tr>
+            <tr><td><strong>1</strong></td><td><strong>New Workforce</strong></td><td>Human-AI collaboration roles and mindset</td></tr>
+            <tr><td><strong>2</strong></td><td><strong>Foundation</strong></td><td>AI infrastructure, data strategy, compute</td></tr>
+            <tr><td><strong>3</strong></td><td><strong>CV as Code</strong></td><td>A living, public resume and track record</td></tr>
+            <tr><td><strong>4</strong></td><td><strong>Second Brain</strong></td><td>Organized personal knowledge management</td></tr>
+            <tr><td><strong>5</strong></td><td><strong>Reverse Training</strong></td><td>Reverse-engineered, rebuilt understanding</td></tr>
+            <tr><td><strong>6</strong></td><td><strong>Agents</strong></td><td>Autonomous, multi-step task automation</td></tr>
+            <tr><td><strong>7</strong></td><td><strong>RAGAS</strong></td><td>Retrieval and generation quality evaluation</td></tr>
+            <tr><td><strong>8</strong></td><td><strong>AOM (Adaptive Object Model)</strong></td><td>A unified, runtime-adaptive core</td></tr>
+            <tr><td><strong>9</strong></td><td><strong>AGI</strong></td><td>High-level, general problem-solving systems</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Why Certification Is Step 0</h2>
+        <p>Certification is placed first because it is the only step in the roadmap that produces a third-party-verifiable claim. Everything after it — infrastructure, agents, evaluation, adaptive systems — is built and judged by people, and those people need a reliable signal of who actually understands the technology they are deploying.</p>
+        <ol style="margin-left: 20px; margin-bottom: 20px;">
+          <li><strong>Verifiability:</strong> A badge from a frontier lab (OpenAI, Anthropic, Google DeepMind, Meta AI) is checkable by anyone: an employer, a client, a collaborator. Self-reported experience with AI tools is not.</li>
+          <li><strong>Safety alignment:</strong> Certification curricula typically require passing safety and alignment modules alongside technical ones. This means a certified builder has been tested on knowing where automation should stop, not just how to build it.</li>
+          <li><strong>Common baseline:</strong> When a team, community, or professional network is built on shared certification (as with the CCAR-P track referenced in this roadmap), members can trust each other's baseline competence without re-litigating it on every project.</li>
+          <li><strong>Signaling in a crowded market:</strong> As AI tooling becomes commoditized, the differentiator shifts from "can use AI" to "can prove they understand AI." Certification is the artifact that carries that proof into a CV, a contract, or a security clearance review.</li>
+          <li><strong>A gate, not a one-time event:</strong> Because the field moves quickly, Step 0 should be read as a recurring practice — re-certifying against updated curricula — rather than a badge earned once and never revisited.</li>
+        </ol>
+
+        <h2>Steps 1-4: Building the Human-AI Foundation</h2>
+        <p>Once competence is certified, it needs a place to operate and a way to be seen.</p>
+        <ul style="margin-left: 20px; margin-bottom: 20px;">
+          <li><strong>Step 1, New Workforce:</strong> shifts team structure toward human-AI collaboration: new roles, and a mindset that treats AI as a collaborator to be managed, not a tool to be ignored or feared.</li>
+          <li><strong>Step 2, Foundation:</strong> builds the infrastructure layer — compute, data strategy, and AI infrastructure setup — that everything automated in later steps will run on.</li>
+          <li><strong>Step 3, CV as Code:</strong> turns professional credibility into a living, versioned artifact: a public GitHub-hosted resume and track record that updates as work happens, rather than a static PDF.</li>
+          <li><strong>Step 4, Second Brain:</strong> organizes the accumulated knowledge (via tools like Notion or Obsidian) so that certified expertise and project history are retrievable rather than trapped in someone's memory.</li>
+        </ul>
+
+        <h2>Steps 5-7: Automation, Agents, and Evaluation Rigor</h2>
+        <p>With a certified, documented foundation in place, the roadmap moves from individual capability to system capability.</p>
+        <ul style="margin-left: 20px; margin-bottom: 20px;">
+          <li><strong>Step 5, Reverse Training:</strong> deconstructs existing systems and workflows to rebuild them through reverse engineering, deepening understanding beyond surface-level use.</li>
+          <li><strong>Step 6, Agents:</strong> deploys autonomous agents for specific, multi-step task automation — the first point where AI acts without a human in every loop.</li>
+          <li><strong>Step 7, RAGAS:</strong> introduces evaluation discipline: Retrieval-Augmented Generation Assessment, measuring whether the agents built in Step 6 are actually retrieving and generating correct, grounded output rather than plausible-sounding errors.</li>
+        </ul>
+
+        <h2>Steps 8-9: Toward Adaptive Systems and AGI</h2>
+        <ul style="margin-left: 20px; margin-bottom: 20px;">
+          <li><strong>Step 8, AOM (Adaptive Object Model):</strong> unifies the evaluated agents and workflows from Steps 5-7 into a single adaptive core: one runtime model that can reconfigure itself as tasks change, rather than a collection of one-off scripts.</li>
+          <li><strong>Step 9, AGI:</strong> is the roadmap's terminal goal: systems built on that adaptive core, secured, trained, and capable of high-level problem solving across domains rather than a single narrow task.</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>Reaching AGI is described here as an engineering and governance problem, not a single research event. Each of the ten steps depends on the verifiability produced by the step before it, and that chain starts at Step 0. Certification matters not because a badge is impressive, but because it is the only checkpoint in the entire roadmap that a third party can independently confirm.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-copy">
+        &copy; 2026 Rifat Erdem Sahin. All rights reserved. · Hosted on GitHub Pages
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/rifaterdemsahin/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
+        <a href="https://github.com/rifaterdemsahin/whitepaper" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub Repository</a>
+        <a href="https://www.youtube.com/@RifatErdemSahin" target="_blank" rel="noopener noreferrer" class="footer-link">YouTube</a>
+        <a href="https://www.rifaterdemsahin.com" target="_blank" rel="noopener noreferrer" class="footer-link">Website</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function openReaderModal() {
+      document.getElementById('readerModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeReaderModal() {
+      document.getElementById('readerModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function handleModalClick(event) {
+      if (event.target === document.getElementById('readerModal')) {
+        closeReaderModal();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeReaderModal();
+      }
+    });
+
+    function shareOnLinkedIn(e) {
+      e.preventDefault();
+      const url = encodeURIComponent(window.location.origin + window.location.pathname);
+      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'width=620,height=580');
+    }
+
+    function shareOnX(e) {
+      e.preventDefault();
+      const url = encodeURIComponent(window.location.origin + window.location.pathname);
+      const text = encodeURIComponent("How We Reach AGI: Why Certification Is Step Zero — Whitepaper by Rifat Erdem Sahin");
+      window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'width=600,height=500');
+    }
+  </script>
+</body>
+</html>
